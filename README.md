@@ -76,7 +76,7 @@ import com.jrequests.entity.Jresponse;
 public class JrequestsDemo2 {
     public static void main(String[] args) {
         // POST --- 无请求体
-        Jresponse jresponse = Jrequests.get("https://api.******.php");
+        Jresponse jresponse = Jrequests.post("https://api.******.php");
         // 获取网页源码
         System.out.println(jresponse.getText());
         // 获取请求状态码
