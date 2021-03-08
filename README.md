@@ -86,7 +86,7 @@ public class JrequestsDemo2 {
 
         // POST --- 有请求体
         JSONObject json = JSONObject.parseObject("{\"key\":\"value\"}");
-        Jresponse jresponse = Jrequests.get("https://api.******.php", json);
+        Jresponse jresponse = Jrequests.post("https://api.******.php", json);
         // 获取网页源码
         System.out.println(jresponse.getText());
         // 获取请求状态码
