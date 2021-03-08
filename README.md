@@ -1,64 +1,64 @@
-# Jrequests - java¶ËÀÁÈËrequests
+# Jrequests - javaç«¯requests
 
-## ¼ò½é£º
+## ç®€ä»‹ï¼š
 
-ÔÚĞ´Õâ¸öÏîÄ¿Ö®Ç°±¾ÈËÒÑ¾­¶ÔPythonÅÀ³æÓĞÁËÒ»Ğ©ÁË½â£¬Ò²Ğ´¹ıÒ»Ğ©²©¿Í£º[https://blog.csdn.net/qq_44700693](https://blog.csdn.net/qq_44700693) ¡£ <br>
-ºóÀ´ÔÚÊ¹ÓÃjava±àĞ´Ò»Ğ©webÏîÄ¿Ê±£¬»áÓÃµ½Ò»Ğ©ÍøÂçÉÏµÄÊµÊ±ĞÅÏ¢£¬ËùÒÔ¾ÍÓĞÁËÕâ¸öĞ¡ÏîÄ¿£¬Ä¿µÄÔÚÓÚÔÚjavaÔ­ÉúÀàµÄ»ù´¡ÉÏ½øĞĞ·â×°£¬Ğ´³öÒ»¸öjava¶ËµÄÀà **requests** ²å¼ş¡£
+åœ¨å†™è¿™ä¸ªé¡¹ç›®ä¹‹å‰æœ¬äººå·²ç»å¯¹Pythonçˆ¬è™«æœ‰äº†ä¸€äº›äº†è§£ï¼Œä¹Ÿå†™è¿‡ä¸€äº›åšå®¢ï¼š[https://blog.csdn.net/qq_44700693](https://blog.csdn.net/qq_44700693) ã€‚ <br>
+åæ¥åœ¨ä½¿ç”¨javaç¼–å†™ä¸€äº›webé¡¹ç›®æ—¶ï¼Œä¼šç”¨åˆ°ä¸€äº›ç½‘ç»œä¸Šçš„å®æ—¶ä¿¡æ¯ï¼Œæ‰€ä»¥å°±æœ‰äº†è¿™ä¸ªå°é¡¹ç›®ï¼Œç›®çš„åœ¨äºåœ¨javaåŸç”Ÿç±»çš„åŸºç¡€ä¸Šè¿›è¡Œå°è£…ï¼Œå†™å‡ºä¸€ä¸ªjavaç«¯çš„ç±» **requests** æ’ä»¶ã€‚
 
-## ¸üĞÂ¼ÇÂ¼£º
+## æ›´æ–°è®°å½•ï¼š
 
-| ÈÕÆÚ | ¸üĞÂÕªÒª |
+| æ—¥æœŸ | æ›´æ–°æ‘˜è¦ |
 |---|---|
-|**21-3-8**| Íê³É×î»ù±¾µÄ **GET** ºÍ **POST** ÇëÇó£¬²¢Ìá½»ÏîÄ¿ÖÁ²Ö¿â¡£|
+|**21-3-8**| å®Œæˆæœ€åŸºæœ¬çš„ **GET** å’Œ **POST** è¯·æ±‚ï¼Œå¹¶æäº¤é¡¹ç›®è‡³ä»“åº“ã€‚|
 
-## ÏîÄ¿ÒÀÀµ£º
+## é¡¹ç›®ä¾èµ–ï¼š
 
-* **log4j-1.2.17** : ÓÃÓÚÈÕÖ¾Êä³ö¡£
-* **fastjson-1.2.75** : ÓÃÓÚJSONÊı¾İ²Ù×÷¡£
+* **log4j-1.2.17** : ç”¨äºæ—¥å¿—è¾“å‡ºã€‚
+* **fastjson-1.2.75** : ç”¨äºJSONæ•°æ®æ“ä½œã€‚
 
-## Ê¹ÓÃ½éÉÜ£º
+## ä½¿ç”¨ä»‹ç»ï¼š
 
-ĞèÒªµ¼Èë±àÒëºÃµÄjar°ü£¬»òÕß×ÔĞĞÏÂÔØÔ´Âë±àÒë¡£
+éœ€è¦å¯¼å…¥ç¼–è¯‘å¥½çš„jaråŒ…ï¼Œæˆ–è€…è‡ªè¡Œä¸‹è½½æºç ç¼–è¯‘ã€‚
 
-* 1¡¢Ê×ÏÈĞèÒª´´½¨Ò»¸ö **Jresponse** ¶ÔÏó£º<br>
+* 1ã€é¦–å…ˆéœ€è¦åˆ›å»ºä¸€ä¸ª **Jresponse** å¯¹è±¡ï¼š<br>
   `Jresponse jresponse = new Jresponse();`<br>
-* 2¡¢Í¨¹ı²»Í¬µÄÇëÇó·½Ê½À´½øĞĞÍøÒ³ÇëÇó£º Èç£º<br>
-a¡¢¶ÔÍøÒ³ **url** ½øĞĞ **GET** ÇëÇó£º<br>
+* 2ã€é€šè¿‡ä¸åŒçš„è¯·æ±‚æ–¹å¼æ¥è¿›è¡Œç½‘é¡µè¯·æ±‚ï¼š å¦‚ï¼š<br>
+aã€å¯¹ç½‘é¡µ **url** è¿›è¡Œ **GET** è¯·æ±‚ï¼š<br>
 `jreponse = jrequests.get(url);`<br>
-b¡¢¶ÔÍøÒ³ **url** ½øĞĞ **POST** ÇëÇó£º<br>
+bã€å¯¹ç½‘é¡µ **url** è¿›è¡Œ **POST** è¯·æ±‚ï¼š<br>
 `jreponse = jrequests.post(url, json);`
   
->»òÕßÖ±½ÓÓÃ **Jresponse** ¶ÔÏó½ÓÊÕ£º<br>
+>æˆ–è€…ç›´æ¥ç”¨ **Jresponse** å¯¹è±¡æ¥æ”¶ï¼š<br>
 `Jresponse jresponse = Jrequests.get(String sUrl);`<br>
 `Jresponse jresponse = Jrequests.post(String sUrl);`
 
-## ¹¦ÄÜ½éÉÜ£º
+## åŠŸèƒ½ä»‹ç»ï¼š
 
-Ä¿Ç°ÒÑ¾­Ö§³ÖµÄ¹¦ÄÜÓĞ£º
+ç›®å‰å·²ç»æ”¯æŒçš„åŠŸèƒ½æœ‰ï¼š
 
-* 1¡¢ **`getText()`** : »ñÈ¡ÍøÒ³Ô´Âë
-* 2¡¢ **`getStatusCode()`** : »ñÈ¡ÍøÒ³ÇëÇó×´Ì¬
-* 2¡¢ **`getURL()`** : »ñÈ¡ÍøÒ³ÇëÇóÁ´½Ó
+* 1ã€ **`getText()`** : è·å–ç½‘é¡µæºç 
+* 2ã€ **`getStatusCode()`** : è·å–ç½‘é¡µè¯·æ±‚çŠ¶æ€
+* 2ã€ **`getURL()`** : è·å–ç½‘é¡µè¯·æ±‚é“¾æ¥
 
-## ´úÂëÊ¾Àı£º
+## ä»£ç ç¤ºä¾‹ï¼š
 
 ```java
 import com.jrequests.entity.Jrequests;
 import com.jrequests.entity.Jresponse;
 
 /**
- * ·¢ËÍGETÇëÇó
+ * å‘é€GETè¯·æ±‚
  * @author Jackson-art
  */
 public class JrequestsDemo1 {
     public static void main(String[] args) {
         // GET
         Jresponse jresponse = Jrequests.get("http://******.com");
-        // »ñÈ¡ÍøÒ³Ô´Âë
+        // è·å–ç½‘é¡µæºç 
         System.out.println(jresponse.getText());
-        // »ñÈ¡ÇëÇó×´Ì¬Âë
+        // è·å–è¯·æ±‚çŠ¶æ€ç 
         System.out.println(jresponse.getStatusCode());
-        // »ñÈ¡ÇëÇóURL
+        // è·å–è¯·æ±‚URL
         System.out.println(jresponse.getUrl());
     }
 }
@@ -70,28 +70,28 @@ import com.jrequests.entity.Jrequests;
 import com.jrequests.entity.Jresponse;
 
 /**
- * ·¢ËÍPOSTÇëÇó 
+ * å‘é€POSTè¯·æ±‚ 
  * @author Jackson-art
  */
 public class JrequestsDemo2 {
     public static void main(String[] args) {
-        // POST --- ÎŞÇëÇóÌå
+        // POST --- æ— è¯·æ±‚ä½“
         Jresponse jresponse = Jrequests.post("https://api.******.php");
-        // »ñÈ¡ÍøÒ³Ô´Âë
+        // è·å–ç½‘é¡µæºç 
         System.out.println(jresponse.getText());
-        // »ñÈ¡ÇëÇó×´Ì¬Âë
+        // è·å–è¯·æ±‚çŠ¶æ€ç 
         System.out.println(jresponse.getStatusCode());
-        // »ñÈ¡ÇëÇóURL
+        // è·å–è¯·æ±‚URL
         System.out.println(jresponse.getUrl());
 
-        // POST --- ÓĞÇëÇóÌå
+        // POST --- æœ‰è¯·æ±‚ä½“
         JSONObject json = JSONObject.parseObject("{\"key\":\"value\"}");
         Jresponse jresponse = Jrequests.post("https://api.******.php", json);
-        // »ñÈ¡ÍøÒ³Ô´Âë
+        // è·å–ç½‘é¡µæºç 
         System.out.println(jresponse.getText());
-        // »ñÈ¡ÇëÇó×´Ì¬Âë
+        // è·å–è¯·æ±‚çŠ¶æ€ç 
         System.out.println(jresponse.getStatusCode());
-        // »ñÈ¡ÇëÇóURL
+        // è·å–è¯·æ±‚URL
         System.out.println(jresponse.getUrl());
     }
 }
