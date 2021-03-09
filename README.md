@@ -9,7 +9,8 @@
 
 | 日期 | 更新摘要 |
 |---|---|
-|**21-3-8**| 完成最基本的 **GET** 和 **POST** 请求，并提交项目至仓库。|
+| **21-3-9** | GET请求更新带参数请求方式。中文自动编码。 |
+| **21-3-8** | 完成最基本的 **GET** 和 **POST** 请求，并提交项目至仓库。|
 
 ## 项目依赖：
 
@@ -23,12 +24,12 @@
 * 1、首先需要创建一个 **Jresponse** 对象：<br>
   `Jresponse jresponse = new Jresponse();`<br>
 * 2、通过不同的请求方式来进行网页请求： 如：<br>
-a、对网页 **url** 进行 **GET** 请求：<br>
-`jreponse = jrequests.get(url);`<br>
-b、对网页 **url** 进行 **POST** 请求：<br>
-`jreponse = jrequests.post(url, json);`
-  
->或者直接用 **Jresponse** 对象接收：<br>
+  a、对网页 **url** 进行 **GET** 请求：<br>
+  `jreponse = jrequests.get(url);`<br>
+  b、对网页 **url** 进行 **POST** 请求：<br>
+  `jreponse = jrequests.post(url, json);`
+
+> 或者直接用 **Jresponse** 对象接收：<br>
 `Jresponse jresponse = Jrequests.get(String sUrl);`<br>
 `Jresponse jresponse = Jrequests.post(String sUrl);`
 
@@ -43,6 +44,7 @@ b、对网页 **url** 进行 **POST** 请求：<br>
 ## 代码示例：
 
 ```java
+import com.alibaba.fastjson.JSONObject;
 import com.jrequests.entity.Jrequests;
 import com.jrequests.entity.Jresponse;
 
@@ -52,8 +54,18 @@ import com.jrequests.entity.Jresponse;
  */
 public class JrequestsDemo1 {
     public static void main(String[] args) {
-        // GET
+        // GET 不带参数
         Jresponse jresponse = Jrequests.get("http://******.com");
+        // 获取网页源码
+        System.out.println(jresponse.getText());
+        // 获取请求状态码
+        System.out.println(jresponse.getStatusCode());
+        // 获取请求URL
+        System.out.println(jresponse.getUrl());
+
+        // GET 带参数
+        JSONObject params = JSONObject.parseObject("{\"key\":\"value\"}");
+        Jresponse jresponse = Jrequests.get("http://******.com", params);
         // 获取网页源码
         System.out.println(jresponse.getText());
         // 获取请求状态码
