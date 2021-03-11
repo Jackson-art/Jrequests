@@ -1,5 +1,7 @@
 # Jrequests - java端requests
 
+![](https://ftp.bmp.ovh/imgs/2021/03/b3ff0ab73ccf3f57.png)
+
 ## 简介：
 
 在写这个项目之前本人已经对Python爬虫有了一些了解，也写过一些博客：[https://blog.csdn.net/qq_44700693](https://blog.csdn.net/qq_44700693) 。 <br>
@@ -9,6 +11,7 @@
 
 | 日期 | 更新摘要 |
 |---|---|
+| **21-3-11** | 新增响应头部信息的获取，返回的是一个 **JSON** 对象。 |
 | **21-3-9** | GET请求更新带参数请求方式。中文自动编码。 |
 | **21-3-8** | 完成最基本的 **GET** 和 **POST** 请求，并提交项目至仓库。|
 
@@ -37,9 +40,12 @@
 
 目前已经支持的功能有：
 
-* 1、 **`getText()`** : 获取网页源码
-* 2、 **`getStatusCode()`** : 获取网页请求状态
-* 2、 **`getURL()`** : 获取网页请求链接
+| 方法 | 作用 | 
+| --- | --- |
+| **`getText()`** | 获取网页源码 |
+| **`getURL()`** | 获取网页请求链接 |
+| **`getStatusCode()`** | 获取网页请求状态 |
+| **`getHeaders()`** | 获取响应头部信息 |
 
 ## 代码示例：
 
@@ -56,6 +62,10 @@ public class JrequestsDemo1 {
     public static void main(String[] args) {
         // GET 不带参数
         Jresponse jresponse = Jrequests.get("http://******.com");
+        // 获取响应头部
+        JSONObject headers = jresponse.getHeaders();
+        String set_cookies = headers.getString("Set-Cookie");
+        System.out.println(set_cookies);
         // 获取网页源码
         System.out.println(jresponse.getText());
         // 获取请求状态码
@@ -64,8 +74,10 @@ public class JrequestsDemo1 {
         System.out.println(jresponse.getUrl());
 
         // GET 带参数
-        JSONObject params = JSONObject.parseObject("{\"key\":\"value\"}");
-        Jresponse jresponse = Jrequests.get("http://******.com", params);
+        JSONObject params = JSONObject.parseObject("{\"wd\":\"Jrequests site:gitee.com\"}");
+        Jresponse jresponse = Jrequests.get("http://www.baidu.com/s", params);
+        // 获取响应头部
+        JSONObject headers = jresponse.getHeaders();
         // 获取网页源码
         System.out.println(jresponse.getText());
         // 获取请求状态码
@@ -89,6 +101,8 @@ public class JrequestsDemo2 {
     public static void main(String[] args) {
         // POST --- 无请求体
         Jresponse jresponse = Jrequests.post("https://api.******.php");
+        // 获取响应头部
+        JSONObject headers = jresponse.getHeaders();
         // 获取网页源码
         System.out.println(jresponse.getText());
         // 获取请求状态码
@@ -99,6 +113,9 @@ public class JrequestsDemo2 {
         // POST --- 有请求体
         JSONObject json = JSONObject.parseObject("{\"key\":\"value\"}");
         Jresponse jresponse = Jrequests.post("https://api.******.php", json);
+        // 获取响应头部
+        JSONObject headers = jresponse.getHeaders();
+        
         // 获取网页源码
         System.out.println(jresponse.getText());
         // 获取请求状态码

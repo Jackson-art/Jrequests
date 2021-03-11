@@ -1,5 +1,7 @@
 package com.jrequests.entity;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.net.URL;
 
 /**
@@ -10,6 +12,7 @@ public class Jresponse {
     private String text;
     private Integer statusCode;
     private URL url;
+    private JSONObject headers;
 
     public void setText(String text) {
         this.text = text;
@@ -33,5 +36,13 @@ public class Jresponse {
 
     public URL getUrl() {
         return url;
+    }
+
+    public void setHeaders(JSONObject headers) {
+        this.headers = headers;
+    }
+
+    public JSONObject getHeaders() {
+        return headers;
     }
 }

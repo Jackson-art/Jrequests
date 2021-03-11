@@ -1,5 +1,6 @@
 package com.jrequests.service.method;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -31,4 +32,22 @@ public class Request {
         }
         return httpUrlConnection;
     }
+
+    /**
+     * 获取返回头信息
+     *
+     * @param httpUrlConnection 请求连接
+     * @return 所有请求头：JSONObject
+     */
+    public static JSONObject getResponseHeaders(HttpURLConnection httpUrlConnection) {
+        JSONObject headers = new JSONObject();
+        final int headerNum = httpUrlConnection.getHeaderFields().keySet().toArray().length;
+        for (int i = 0; i < headerNum; i++) {
+            if (httpUrlConnection.getHeaderFieldKey(i) != null) {
+                headers.put(httpUrlConnection.getHeaderFieldKey(i), httpUrlConnection.getHeaderField(i));
+            }
+        }
+        return headers;
+    }
+
 }

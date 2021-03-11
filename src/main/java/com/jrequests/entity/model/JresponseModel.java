@@ -1,6 +1,8 @@
 package com.jrequests.entity.model;
 
+import com.alibaba.fastjson.JSONObject;
 import com.jrequests.entity.Jresponse;
+import com.jrequests.service.method.Request;
 import com.jrequests.util.JrequestsUtil;
 import org.apache.log4j.Logger;
 
@@ -17,8 +19,10 @@ public class JresponseModel {
 
     public static Jresponse getJresponse(HttpURLConnection httpUrlConnection) {
         Jresponse jresponse = new Jresponse();
+        // 获取请求头
+        JSONObject headers = Request.getResponseHeaders(httpUrlConnection);
+        jresponse.setHeaders(headers);
         try {
-            assert httpUrlConnection != null;
             jresponse.setStatusCode(httpUrlConnection.getResponseCode());
         } catch (IOException e) {
             logger.error("失败或中断的 I/O 操作。");

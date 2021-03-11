@@ -24,9 +24,11 @@ public class GetMethod {
 
         // 获取一个连接
         HttpURLConnection httpUrlConnection = Request.getConnection(realUrl);
+
         // 获取返回体对象
         Jresponse jresponse = JresponseModel.getJresponse(httpUrlConnection);
         httpUrlConnection.disconnect();
         return jresponse;
     }
+
 }
