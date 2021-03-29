@@ -1,0 +1,4 @@
+<ERROR><2021-03-29 16:50:55> hu.jspider.jrequests.util.JrequestsUtil.getText(JrequestsUtil.java:38) 获取网页源码 : 失败或中断的 I/O 操作。
+<ERROR><2021-03-29 16:52:24> hu.jspider.jrequests.util.JrequestsUtil.getText(JrequestsUtil.java:38) 获取网页源码 : 失败或中断的 I/O 操作。
+<ERROR><2021-03-29 16:59:20> hu.jspider.jrequests.util.JrequestsUtil.getText(JrequestsUtil.java:38) 获取网页源码 : 失败或中断的 I/O 操作。
+<ERROR><2021-03-29 17:00:15> hu.jspider.jrequests.util.JrequestsUtil.getText(JrequestsUtil.java:38) 获取网页源码 : 失败或中断的 I/O 操作。

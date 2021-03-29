@@ -1,29 +1,29 @@
-package com.jrequests.entity.model;
-
-import java.util.HashMap;
-import java.util.Map;
+package hu.jspider.jrequests.entity.model;
 
 /**
  * ×´Ì¬Âë
  *
  * @author Hu.Sir
  */
-public class StatusCode {
-    static final Map<Integer, String> STATUS_CODE = new HashMap<Integer, String>() {{
-        put(200, "OK");
-        put(404, "Forbidden");
-    }};
-
+public enum StatusCode {
     /**
-     * »ñÈ¡×´Ì¬Âë¶ÔÓ¦ÃèÊö
-     *
-     * @param status ×´Ì¬Âë
-     * @return ¶ÔÓ¦ÃèÊö£ºString
+     * SUCCESS
      */
-    public static String getTextByCode(Integer status) {
-        return STATUS_CODE.get(status);
+    SUCCESS(200),
+    /**
+     * FOUND
+     */
+    FOUND(302);
+
+    private final Integer CODE;
+
+    StatusCode(Integer code) {
+        this.CODE = code;
     }
 
+    public Integer getCode() {
+        return CODE;
+    }
 }
 
 /*

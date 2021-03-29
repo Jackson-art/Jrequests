@@ -1,7 +1,8 @@
-package com.jrequests.util;
+package hu.jspider.jrequests.util;
 
 import com.alibaba.fastjson.JSONObject;
-import org.apache.log4j.Logger;
+import hu.jspider.jlogger.JLogger;
+import hu.jspider.jrequests.entity.Jrequests;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +10,6 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,9 +20,9 @@ import java.util.regex.Pattern;
  */
 public class JrequestsUtil {
     /**
-     * Logger 日志对象
+     * JLogger 日志对象
      */
-    private static final Logger logger = Logger.getLogger(Class.class);
+    private static final JLogger LOGGER = JLogger.getLogger();
 
     /**
      * 获取拼接网页源码
@@ -33,9 +33,9 @@ public class JrequestsUtil {
     public static String getText(HttpURLConnection httpUrlConnection) {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(), StandardCharsets.UTF_8));
+            reader = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(), Jrequests.encode));
         } catch (IOException e) {
-            logger.error("失败或中断的 I/O 操作。");
+            LOGGER.error("获取网页源码", "失败或中断的 I/O 操作。");
         }
         String lines;
         StringBuilder text = new StringBuilder();
@@ -44,11 +44,12 @@ public class JrequestsUtil {
                 assert reader != null;
                 if ((lines = reader.readLine()) == null) {
                     break;
+                } else {
+                    text.append(lines);
                 }
-                text.append(lines);
             }
         } catch (IOException e) {
-            logger.error("获取 text 失败！");
+            LOGGER.error("拼接网页源码", "获取 text 失败！");
         }
         return text.toString();
     }
@@ -75,6 +76,9 @@ public class JrequestsUtil {
         return realUrl.toString();
     }
 
+
+    private final static Pattern P = Pattern.compile("[\u4e00-\u9fa5]");
+
     /**
      * URL链接中的中文进行编码
      *
@@ -82,19 +86,20 @@ public class JrequestsUtil {
      * @return 编码后的字符串
      */
     private static String getUrlEncode(String str) {
-        final Pattern p = Pattern.compile("[\u4e00-\u9fa5]");
-        final Matcher m = p.matcher(str);
+        final Matcher m = P.matcher(str);
+        String tempStr = str.replaceAll(" ", "%20");
         if (m.find()) {
             String reStr = "";
             try {
-                reStr = URLEncoder.encode(str, "GBK");
+                reStr = URLEncoder.encode(tempStr, "GBK");
             } catch (UnsupportedEncodingException e) {
-                logger.error("不支持字符编码!");
+                LOGGER.error("请求参数中文转码", "不支持字符编码!");
             }
             return reStr.trim();
         }
-        return str.trim();
+        return tempStr.trim();
     }
+
 
 }
 
