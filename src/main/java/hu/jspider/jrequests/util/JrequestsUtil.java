@@ -2,7 +2,7 @@ package hu.jspider.jrequests.util;
 
 import com.alibaba.fastjson.JSONObject;
 import hu.jspider.jlogger.JLogger;
-import hu.jspider.jrequests.entity.Jrequests;
+import hu.jspider.jrequests.Jrequests;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -76,7 +76,9 @@ public class JrequestsUtil {
         return realUrl.toString();
     }
 
-
+    /**
+     * 正则表达式
+     */
     private final static Pattern P = Pattern.compile("[\u4e00-\u9fa5]");
 
     /**
@@ -99,7 +101,6 @@ public class JrequestsUtil {
         }
         return tempStr.trim();
     }
-
 
 }
 

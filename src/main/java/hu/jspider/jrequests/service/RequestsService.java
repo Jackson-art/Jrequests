@@ -1,9 +1,11 @@
 package hu.jspider.jrequests.service;
 
 import com.alibaba.fastjson.JSONObject;
-import hu.jspider.jrequests.entity.Jresponse;
-import hu.jspider.jrequests.method.GET;
-import hu.jspider.jrequests.method.POST;
+import hu.jspider.jrequests.Jresponse;
+import hu.jspider.jrequests.method.Get;
+import hu.jspider.jrequests.method.Post;
+import hu.jspider.jrequests.util.JrequestsUtil;
+import hu.jspider.jrequests.util.StringUtil;
 
 /**
  * 请求网页
@@ -18,62 +20,82 @@ public class RequestsService {
      * @param sUrl 请求URL: String
      * @return Jresponse 对象
      */
-    public Jresponse getJresponseByGet(String sUrl) {
-        return new GET().getJresponseWithParams(sUrl, null);
+    public Jresponse sendRequestByGet(String sUrl) {
+        return new Get().sendRequest(sUrl);
     }
 
     /**
      * 带参数的GET请求
      *
-     * @param sUrl   请求URL: String
-     * @param params 请求参数：JSONObject
+     * @param sUrl       请求URL: String
+     * @param jsonObject 请求参数：JSONObject
      * @return Jresponse 对象
      */
-    public Jresponse getJresponseByGetWithParams(String sUrl, JSONObject params) {
-        return new GET().getJresponseWithParams(sUrl, params);
+    public Jresponse sendRequestByGet(String sUrl, JSONObject jsonObject) {
+        String flag = "user-agent";
+        // 判断参数是否为请求头
+        if (StringUtil.isExistIgnoreCase(jsonObject.keySet(), flag)) {
+            return new Get().sendRequest(sUrl, jsonObject);
+        } else {
+            return new Get().sendRequest(JrequestsUtil.getRealUrl(sUrl, jsonObject));
+        }
     }
 
     /**
-     * 带请求头的GET请求
+     * 带两个参数的GET请求
      *
-     * @param sUrl    请求URL: String
-     * @param headers 请求参数：JSONObject
+     * @param sUrl        请求URL: String
+     * @param jsonObject1 请求参数：JSONObject
+     * @param jsonObject2 请求参数：JSONObject
      * @return Jresponse 对象
      */
-    public Jresponse getJresponseByGetWithHeaders(String sUrl, JSONObject headers) {
-        return new GET().getJresponseWithHeaders(sUrl, headers);
+    public Jresponse sendRequestByGet(String sUrl, JSONObject jsonObject1, JSONObject jsonObject2) {
+        String flag = "user-agent";
+        // 判断参数是否为请求头
+        if (StringUtil.isExistIgnoreCase(jsonObject1.keySet(), flag)) {
+            // 若jsonObject1为请求头
+            return new Get().sendRequest(JrequestsUtil.getRealUrl(sUrl, jsonObject1), jsonObject2);
+        } else {
+            // 若jsonObject2为请求头
+            return new Get().sendRequest(JrequestsUtil.getRealUrl(sUrl, jsonObject2), jsonObject1);
+        }
     }
 
-    /**
-     * 不带请求体POST请求
-     *
-     * @param sUrl 请求URL String
-     * @return Jresponse 对象
-     */
-    public Jresponse getJresponseByPost(String sUrl) {
-        return new POST().getJresponseObject(sUrl, null);
-    }
+
+    /*===========================================    分 界 线    ===========================================*/
+
 
     /**
-     * 带请求体的POST请求
+     * 不带参数的POST请求
      *
      * @param sUrl 请求URL: String
-     * @param json 请求体
      * @return Jresponse 对象
      */
-    public Jresponse getJresponseByPost(String sUrl, String json) {
-        return new POST().getJresponseObject(sUrl, json);
+    public Jresponse sendRequestByPost(String sUrl) {
+        return new Post().sendRequest(sUrl);
     }
 
     /**
-     * 带请求体和请求头的POST请求
+     * 带一个参数的POST请求
      *
-     * @param sUrl    请求URL: String
-     * @param headers 请求头
-     * @param data    请求体
+     * @param sUrl       请求URL: String
+     * @param jsonObject 请求参数: JSONObject
      * @return Jresponse 对象
      */
-    public Jresponse getJresponseByPost(String sUrl, JSONObject headers, String data) {
-        return new POST().getJresponseObject(sUrl, headers, data);
+    public Jresponse sendRequestByPost(String sUrl, JSONObject jsonObject) {
+        return new Post().sendRequest(sUrl, jsonObject);
     }
+
+    /**
+     * 带两个参数的GET请求
+     *
+     * @param sUrl        请求URL: String
+     * @param jsonObject1 请求参数：JSONObject
+     * @param jsonObject2 请求参数：JSONObject
+     * @return Jresponse 对象
+     */
+    public Jresponse sendRequestByPost(String sUrl, JSONObject jsonObject1, JSONObject jsonObject2) {
+        return new Post().sendRequest(sUrl, jsonObject1, jsonObject2);
+    }
+
 }

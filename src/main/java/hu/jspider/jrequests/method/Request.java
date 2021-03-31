@@ -6,8 +6,10 @@ import hu.jspider.jlogger.JLogger;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -27,19 +29,28 @@ public class Request {
      * @param sUrl 请求链接
      * @return HttpURLConnection对象
      */
-    public static HttpURLConnection getConnection(String sUrl) {
+    public static HttpURLConnection getConnection(String sUrl, String method) {
+        // 创建一个URL对象
         URL url = null;
         try {
             url = new URL(sUrl);
         } catch (MalformedURLException e) {
             LOGGER.error("新建一个URL对象", "错误的URL: 在规范字符串中找不到任何合法协议 / 无法解析字符串。");
         }
+        // 建立一个连接
         HttpURLConnection httpUrlConnection = null;
         try {
             assert url != null;
             httpUrlConnection = (HttpURLConnection) url.openConnection();
         } catch (IOException e) {
             LOGGER.error("打开请求连接", "失败或中断的 I/O 操作。");
+        }
+        // 设置请求方式
+        try {
+            assert httpUrlConnection != null;
+            httpUrlConnection.setRequestMethod(method.toUpperCase(Locale.ROOT));
+        } catch (ProtocolException e) {
+            LOGGER.warn("设置请求方式", "请求方式设置失败！");
         }
         return httpUrlConnection;
     }

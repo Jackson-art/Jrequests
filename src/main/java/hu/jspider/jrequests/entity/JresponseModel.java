@@ -1,8 +1,8 @@
-package hu.jspider.jrequests.entity.model;
+package hu.jspider.jrequests.entity;
 
 import com.alibaba.fastjson.JSONObject;
 import hu.jspider.jlogger.JLogger;
-import hu.jspider.jrequests.entity.Jresponse;
+import hu.jspider.jrequests.Jresponse;
 import hu.jspider.jrequests.method.Request;
 import hu.jspider.jrequests.util.JrequestsUtil;
 
