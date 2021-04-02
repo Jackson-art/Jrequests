@@ -1,7 +1,7 @@
 package hu.jspider.jrequests.method;
 
 import com.alibaba.fastjson.JSONObject;
-import hu.jspider.jrequests.Jresponse;
+import hu.jspider.jrequests.impl.Jresponse;
 
 /**
  * 请求方式接口

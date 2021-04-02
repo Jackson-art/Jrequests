@@ -2,7 +2,7 @@ package hu.jspider.jrequests.util;
 
 import com.alibaba.fastjson.JSONObject;
 import hu.jspider.jlogger.JLogger;
-import hu.jspider.jrequests.Jrequests;
+import hu.jspider.jrequests.impl.Requests;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class JrequestsUtil {
     public static String getText(HttpURLConnection httpUrlConnection) {
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(), Jrequests.encode));
+            reader = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(), Requests.encode));
         } catch (IOException e) {
             LOGGER.error("获取网页源码", "失败或中断的 I/O 操作。");
         }
@@ -100,6 +100,22 @@ public class JrequestsUtil {
             return reStr.trim();
         }
         return tempStr.trim();
+    }
+
+    /**
+     * 将json格式的字符串转换为JSONObject对象
+     *
+     * @param str json格式的字符串
+     * @return JSONObject对象
+     */
+    public static JSONObject getJsonObject(String str) {
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = JSONObject.parseObject(str);
+        } catch (Exception e) {
+            LOGGER.error(str + "转换为JSONObject对象时", e);
+        }
+        return jsonObject;
     }
 
 }

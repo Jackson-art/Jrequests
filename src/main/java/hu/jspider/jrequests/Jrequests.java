@@ -1,23 +1,21 @@
 package hu.jspider.jrequests;
 
-import com.alibaba.fastjson.JSONObject;
 import com.sun.istack.internal.NotNull;
-import hu.jspider.jrequests.impl.RequestsImpl;
+import hu.jspider.jlogger.JLogger;
+import hu.jspider.jrequests.impl.Jresponse;
+import hu.jspider.jrequests.impl.Requests;
 import hu.jspider.jrequests.service.RequestsService;
+import hu.jspider.jrequests.util.JrequestsUtil;
 
 /**
  * Jrequests实体类
  *
  * @author Hu.Sir
  */
-public class Jrequests implements RequestsImpl {
-    /**
-     * 网页源码的编码格式 : 默认为 UTF-8
-     */
-    public static String encode;
+public class Jrequests extends Requests {
+    private static final JLogger LOGGER = JLogger.getLogger();
 
     public Jrequests() {
-        Jrequests.encode = "UTF-8";
     }
 
     /**
@@ -26,105 +24,56 @@ public class Jrequests implements RequestsImpl {
      * @param encode 指定网页源码的编码格式
      */
     public Jrequests(String encode) {
-        Jrequests.encode = encode;
-    }
-
-    /**
-     * 不带参数的GET请求
-     *
-     * @param sUrl 请求URL: String
-     * @return Jresponse 对象
-     */
-    @Override
-    public Jresponse get(@NotNull String sUrl) {
-        return new RequestsService().sendRequestByGet(sUrl);
+        super(encode);
     }
 
     /**
      * 带一个参数的GET请求
      *
-     * @param sUrl       请求URL: String
-     * @param jsonObject 请求参数：JSONObject
+     * @param sUrl 请求URL: String
+     * @param str  请求参数：String
      * @return Jresponse 对象
      */
-    @Override
-    public Jresponse get(@NotNull String sUrl, JSONObject jsonObject) {
-        return new RequestsService().sendRequestByGet(sUrl, jsonObject);
+    public Jresponse get(@NotNull String sUrl, String str) {
+        return new RequestsService().sendRequestByGet(sUrl, JrequestsUtil.getJsonObject(str));
     }
 
     /**
      * 带两个参数的GET请求
      *
-     * @param sUrl        请求URL: String
-     * @param jsonObject1 请求参数：JSONObject
-     * @param jsonObject2 请求参数：JSONObject
+     * @param sUrl 请求URL: String
+     * @param str1 请求参数：String
+     * @param str2 请求参数：String
      * @return Jresponse 对象
      */
-    @Override
-    public Jresponse get(@NotNull String sUrl, JSONObject jsonObject1, JSONObject jsonObject2) {
-        return new RequestsService().sendRequestByGet(sUrl, jsonObject1, jsonObject2);
-    }
-
-    /**
-     * 多参数同时传递
-     *
-     * @param objects 所有参数
-     * @return Jresponse 对象
-     */
-    @Override
-    public Jresponse get(@NotNull Object... objects) {
-        return null;
+    public Jresponse get(@NotNull String sUrl, String str1, String str2) {
+        return new RequestsService().sendRequestByGet(sUrl, JrequestsUtil.getJsonObject(str1), JrequestsUtil.getJsonObject(str2));
     }
 
 
     /*===========================================    分 界 线    ===========================================*/
 
-
-    /**
-     * 不带参数POST请求
-     *
-     * @param sUrl 请求URL: String
-     * @return Jresponse 对象
-     */
-    @Override
-    public Jresponse post(@NotNull String sUrl) {
-        return new RequestsService().sendRequestByPost(sUrl);
-    }
-
     /**
      * 带一个参数的POST请求
      *
-     * @param sUrl       请求URL: String
-     * @param jsonObject 请求参数: JSONObject
+     * @param sUrl 请求URL: String
+     * @param str  请求参数: String
      * @return Jresponse 对象
      */
-    @Override
-    public Jresponse post(@NotNull String sUrl, JSONObject jsonObject) {
-        return new RequestsService().sendRequestByPost(sUrl, jsonObject);
+    public Jresponse post(@NotNull String sUrl, String str) {
+        return new RequestsService().sendRequestByPost(sUrl, JrequestsUtil.getJsonObject(str));
     }
 
     /**
      * 带两个参数的POST请求
      *
-     * @param sUrl        请求URL: String
-     * @param jsonObject1 请求参数: JSONObject
-     * @param jsonObject2 请求参数: JSONObject
+     * @param sUrl 请求URL: String
+     * @param str1 请求参数：String
+     * @param str2 请求参数：String
      * @return Jresponse 对象
      */
-    @Override
-    public Jresponse post(@NotNull String sUrl, JSONObject jsonObject1, JSONObject jsonObject2) {
-        return new RequestsService().sendRequestByPost(sUrl, jsonObject1, jsonObject2);
-    }
-
-    /**
-     * 多参数的POST请求
-     *
-     * @param objects 所有参数
-     * @return Jresponse 对象
-     */
-    @Override
-    public Jresponse post(@NotNull Object... objects) {
-        return null;
+    public Jresponse post(@NotNull String sUrl, String str1, String str2) {
+        return new RequestsService().sendRequestByPost(sUrl, JrequestsUtil.getJsonObject(str1), JrequestsUtil.getJsonObject(str2));
     }
 
 }
