@@ -2,7 +2,6 @@ package hu.jspider.jrequests;
 
 import com.sun.istack.internal.NotNull;
 import hu.jspider.jlogger.JLogger;
-import hu.jspider.jrequests.impl.Jresponse;
 import hu.jspider.jrequests.impl.Requests;
 import hu.jspider.jrequests.service.RequestsService;
 import hu.jspider.jrequests.util.JrequestsUtil;
@@ -10,7 +9,7 @@ import hu.jspider.jrequests.util.JrequestsUtil;
 /**
  * Jrequests µÃÂ¿‡
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public class Jrequests extends Requests {
     private static final JLogger LOGGER = JLogger.getLogger();

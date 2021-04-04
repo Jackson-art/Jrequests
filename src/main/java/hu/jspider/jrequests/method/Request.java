@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * «Î«Û µÃÂ
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public class Request {
     /**

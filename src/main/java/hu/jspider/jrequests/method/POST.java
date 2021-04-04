@@ -3,7 +3,7 @@ package hu.jspider.jrequests.method;
 import com.alibaba.fastjson.JSONObject;
 import com.sun.istack.internal.NotNull;
 import hu.jspider.jlogger.JLogger;
-import hu.jspider.jrequests.impl.Jresponse;
+import hu.jspider.jrequests.Jresponse;
 import hu.jspider.jrequests.entity.JresponseModel;
 import hu.jspider.jrequests.util.StringUtil;
 
@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * POST «Î«Û
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public class Post implements RequestMethod {
     /**

@@ -2,12 +2,13 @@ package hu.jspider.jrequests.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sun.istack.internal.NotNull;
+import hu.jspider.jrequests.Jresponse;
 import hu.jspider.jrequests.service.RequestsService;
 
 /**
  * 实现RequestsImpl接口
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public class Requests implements RequestsImpl {
     /**

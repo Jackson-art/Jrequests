@@ -2,7 +2,7 @@ package hu.jspider.jrequests.method;
 
 import com.alibaba.fastjson.JSONObject;
 import com.sun.istack.internal.NotNull;
-import hu.jspider.jrequests.impl.Jresponse;
+import hu.jspider.jrequests.Jresponse;
 import hu.jspider.jrequests.entity.JresponseModel;
 
 import java.net.HttpURLConnection;
@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 /**
  * Get «Î«Û
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public class Get implements RequestMethod{
 

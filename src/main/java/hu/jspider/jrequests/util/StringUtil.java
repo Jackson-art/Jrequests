@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * ×Ö·û´®¹¤¾ßÀà
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public class StringUtil {
     /**

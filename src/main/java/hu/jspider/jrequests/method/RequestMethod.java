@@ -1,12 +1,12 @@
 package hu.jspider.jrequests.method;
 
 import com.alibaba.fastjson.JSONObject;
-import hu.jspider.jrequests.impl.Jresponse;
+import hu.jspider.jrequests.Jresponse;
 
 /**
  * 请求方式接口
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public interface RequestMethod {
 

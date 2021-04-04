@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 /**
  * 网页源码获取工具
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public class JrequestsUtil {
     /**

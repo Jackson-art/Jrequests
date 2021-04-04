@@ -1,7 +1,7 @@
 package hu.jspider.jrequests.service;
 
 import com.alibaba.fastjson.JSONObject;
-import hu.jspider.jrequests.impl.Jresponse;
+import hu.jspider.jrequests.Jresponse;
 import hu.jspider.jrequests.method.Get;
 import hu.jspider.jrequests.method.Post;
 import hu.jspider.jrequests.util.JrequestsUtil;
@@ -10,7 +10,7 @@ import hu.jspider.jrequests.util.StringUtil;
 /**
  * ว๋ว๓อ๘าณ
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public class RequestsService {
 

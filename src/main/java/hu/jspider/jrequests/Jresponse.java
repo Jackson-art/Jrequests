@@ -7,7 +7,7 @@ import hu.jspider.jrequests.impl.ResponseImpl;
 import java.net.URL;
 
 /**
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public class Jresponse implements ResponseImpl {
 

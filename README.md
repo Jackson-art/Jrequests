@@ -65,7 +65,7 @@
 ```java
 import com.alibaba.fastjson.JSONObject;
 import hu.jspider.jrequests.Jrequests;
-import hu.jspider.jrequests.impl.Jresponse;
+import hu.jspider.jrequests.Jresponse;
 import hu.jspider.jrequests.impl.Response;
 
 
@@ -107,7 +107,7 @@ public class JrequestsDemo1 {
 ```java
 import com.alibaba.fastjson.JSONObject;
 import hu.jspider.jrequests.Jrequests;
-import hu.jspider.jrequests.impl.Jresponse;
+import hu.jspider.jrequests.Jresponse;
 
 
 /**

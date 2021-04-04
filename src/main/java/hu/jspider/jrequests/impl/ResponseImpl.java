@@ -7,7 +7,7 @@ import java.net.URL;
 /**
  * 请求体接口
  *
- * @author Hu.Sir
+ * @author Jackson-art
  */
 public interface ResponseImpl {
 
